@@ -1,0 +1,38 @@
+[logging]
+# Levels from the Python logging module:
+#    CRITICAL  50
+#    ERROR     40
+#    WARNING   30
+#    INFO      20
+#    DEBUG     10
+#    NOTSET    0
+level = 40
+
+[collector]
+interval = 60
+
+[mqtt]
+topic = home/sensor
+host = localhost
+port = 1883
+
+[owserver]
+host = localhost
+port = 4304
+
+[sensors]
+weather/datetime = datetime
+acurite/sensor_battery = sensor_battery
+acurite/rssi = rssi
+acurite/pressure = pressure
+acurite/temperature = inside_temperature
+station/humidity = outside_humidity
+station/rain = rain
+station/rain_total = rain_total
+station/temperature = outside_temperature
+station/wind_direction = wind_direction
+station/wind_speed = wind_speed
+
+[calculate]
+dewpoint = outside
+
