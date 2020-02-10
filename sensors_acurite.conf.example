@@ -16,10 +16,6 @@ topic = home/sensor
 host = localhost
 port = 1883
 
-[owserver]
-host = localhost
-port = 4304
-
 [sensors]
 weather/datetime = datetime
 acurite/sensor_battery = sensor_battery
