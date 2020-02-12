@@ -372,6 +372,7 @@ import logging
 import syslog
 import argparse
 import platform
+import json
 import traceback
 import configparser
 import paho.mqtt.client as mqtt
@@ -1072,7 +1073,7 @@ if __name__ == '__main__':
     mqtt_topic = configuration['mqtt'].get('topic', 'home/sensor/acurite')
     mqtt_host = configuration['mqtt'].get('host', 'localhost')
     mqtt_port = int(configuration['mqtt'].get('port', '1883'))
-    mqtt_client = mqtt.Client(platform.node() + ':sensors_acurite' , True)
+    mqtt_client = mqtt.Client(platform.node() + ':sensors-acurite' , True)
     mqtt_client.on_message = mqtt_on_message
     mqtt_client.on_connect = mqtt_on_connect
     mqtt_client.on_publish = mqtt_on_publish
@@ -1083,7 +1084,14 @@ if __name__ == '__main__':
     driver = AcuRiteDriver()
 
     for packet in driver.genLoopPackets():
+        message = {}
         for sensor, value in packet.items():
             if sensor in sensors and value is not None:
-                mqtt_client.publish(mqtt_topic + '/' + sensors[sensor],
-                                    str(round(value, 3)))
+                location, device = sensors[sensor].split('/')
+                if not location in message:
+                    message[location] = {}
+                message[location][device] = str(round(value, 3))
+                # XXX - Individual messages - mqtt_client.publish(mqtt_topic + '/' + sensors[sensor], str(round(value, 3)))
+        for location in message:
+            mqtt_client.publish(mqtt_topic + '/' + location, json.dumps(message[location]))
+        # XXX - As one message - mqtt_client.publish(mqtt_topic, json.dumps(message))

@@ -13,9 +13,9 @@ provides=('sensors_acurite')
 license=('MIT')
 source=("$pkgname" "$pkgname.service" "$pkgname.conf.example" "LICENSE")
 install=$pkgname.install
-sha256sums=('b0d7fbfa1d89c8aecf4074335c705e3441dfae4ad68ee42b82208a9b91c48074'
+sha256sums=('5c6896328422b792b28acfb488aee71ef8ead3c4f565bb9a74ba9960fbad2d22'
             'bfa543057556d1d8ef30612c248b65344009460958f2c22e15d97299a16eb01e'
-            '516d5a5297a2583d53915134e907681dc43c7d7bdbcd7ba1ceb58a514b600885'
+            'e72ffdfc10756ccc189d74b50e2ddaab049a45a0c3f0d96ce2a642787e4aeb37'
 	    '8c75a9231db8906865e29706ed63aad18fd918c92c15dbefbb13c25fe42850b4')
 
 package() {

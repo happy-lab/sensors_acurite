@@ -17,17 +17,17 @@ host = localhost
 port = 1883
 
 [sensors]
-weather/datetime = datetime
+#acurite/datetime = datetime
 acurite/sensor_battery = sensor_battery
 acurite/rssi = rssi
-acurite/pressure = pressure
-acurite/temperature = inside_temperature
-station/humidity = outside_humidity
-station/rain = rain
-station/rain_total = rain_total
-station/temperature = outside_temperature
-station/wind_direction = wind_direction
-station/wind_speed = wind_speed
+office/pressure = pressure
+office/temperature = inside_temperature
+garden/humidity = outside_humidity
+garden/rain = rain
+garden/rain_total = rain_total
+garden/temperature = outside_temperature
+garden/wind_direction = wind_direction
+garden/wind_speed = wind_speed
 
 [calculate]
 dewpoint = outside
