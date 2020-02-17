@@ -1090,7 +1090,7 @@ if __name__ == '__main__':
                 location, device = sensors[sensor].split('/')
                 if not location in message:
                     message[location] = {}
-                message[location][device] = str(round(value, 3))
+                message[location][device] = round(value, 3)
                 # XXX - Individual messages - mqtt_client.publish(mqtt_topic + '/' + sensors[sensor], str(round(value, 3)))
         for location in message:
             mqtt_client.publish(mqtt_topic + '/' + location, json.dumps(message[location]))
