@@ -4,7 +4,7 @@ Documentation=man:sensors_acurite(1)
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/sensors_acurite -c /etc/sensors/sensors_acurite.conf
+ExecStart=/usr/bin/sensors_acurited -c /etc/sensors/sensors_acurite.conf
 Restart=on-failure
 
 [Install]

@@ -367,7 +367,7 @@ X1 - 2 bytes
 import sys
 import os
 import time
-from datetime import datetime
+import datetime
 import logging
 import syslog
 import argparse
@@ -519,7 +519,8 @@ class AcuRiteDriver(object):
 
             delay = self.polling_interval - (time.time() % self.polling_interval)
             time.sleep(delay)
-            now = time.time()
+            now_utc = datetime.datetime.now(datetime.timezone.utc)
+            now = now_utc.timestamp()
             
             ntries += 1
             
@@ -548,7 +549,7 @@ class AcuRiteDriver(object):
 
                 if raw1 or raw2:
                     
-                    timestamp = datetime.fromtimestamp(round(now)).strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+                    timestamp = now_utc.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
                     packet = {'timestamp': timestamp}
                     
                     if raw1:
